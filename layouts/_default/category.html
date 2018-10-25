@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+
+    <!-- Basic Meta -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Google Analytics -->
+    {{ template "_internal/google_analytics_async.html" . }}
+
+    <!-- Main SEO Meta -->
+    <title>{{ .Title }} n' stuff</title>
+    <meta name="description" content="This is the {{ .Title }} section" />
+    <link rel="canonical" href="{{ .Permalink }}" />
+
+    <!-- Open Graph SEO -->
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="{{ .Title }}" />
+    <meta property="og:description" content="This is the {{ .Title }} section" />
+    <meta property="og:url" content="{{ .Permalink }}" />
+    <meta property="og:site_name" content="Tom Feeley" />
+    <meta property="og:updated_time" content="{{ .Date }}" />
+    <!-- <meta property="og:image" content="{{ .Params.featuredimage }}" />
+    <meta property="og:image:secure_url" content="" />
+    <meta property="og:image:width" content="" />
+    <meta property="og:image:height" content="" />
+    <meta property="og:image:alt" content="{{ .Params.featuredimagealt }}" /> -->
+
+    <!-- Twitter Meta -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:description" content="This is the {{ .Title }} section" />
+    <meta name="twitter:title" content="{{ .Title }}" />
+    <!-- <meta name="twitter:image" content="{{ .Params.featuredimage }}" /> -->
+    <meta name="twitter:site" content="{{ .Site.Params.twitter }}">
+
+    <!-- Styles -->
+    {{ partial "inline-css" . }}
+
+    <!-- Chat: Crisp -->
+    {{ partial "crisp" . }}
+
+</head>
+<body class="typeset">
+
+<!-- Global Header -->
+{{ partial "header" . }}
+<!-- End of Global Header -->
+
+<div class="mw7 center pa4">
+  <h1>{{ .Title }}</h1>
+  <p class="caption">Section</p>
+  {{ .Content }}
+  <ul>
+  {{ range .Pages }}
+    <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+  {{ end }}
+  </ul>
+</div>
+
+</body>
+</html>
